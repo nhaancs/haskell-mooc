@@ -37,7 +37,7 @@ double x = x*2
 -- four.
 
 quadruple :: Integer -> Integer
-quadruple x = 2 * double x
+quadruple x = double (double x)
 ------------------------------------------------------------------------------
 -- Ex 4: define the function distance. It should take four arguments of
 -- type Double: x1, y1, x2, and y2 and return the (euclidean) distance
@@ -68,10 +68,7 @@ eeny x = if even x then "eeny" else "meeny"
 -- "mellon".
 
 checkPassword :: String -> String
-checkPassword password
-  | password == "swordfish" = "You're in."
-  | password == "mellon" = "You're in."
-  | otherwise = "ACCESS DENIED!"
+checkPassword password = if password == "swordfish" || password == "mellon" then "You're in." else "ACCESS DENIED!"
 ------------------------------------------------------------------------------
 -- Ex 7: A postal service prices packages the following way.
 -- Packages that weigh up to 500 grams cost 250 credits.
@@ -96,7 +93,7 @@ postagePrice w
 
 isZero :: Integer -> Bool 
 isZero 0 = True
-isZero x = False
+isZero _ = False
 ------------------------------------------------------------------------------
 -- Ex 9: implement using recursion a function sumTo such that
 --   sumTo n
@@ -129,7 +126,5 @@ power n k = n * power n (k-1)
 --   ilog3 7 ==> 2
 
 ilog3 :: Integer -> Integer
-ilog3 x = if result == 0
-          then 1
-          else 1 + ilog3 result
-          where result = x `div` 3
+ilog3 0 = 0
+ilog3 x = 1 + ilog3 (x `div` 3)
