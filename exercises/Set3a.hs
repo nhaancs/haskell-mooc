@@ -305,19 +305,20 @@ multiApp f gs x = f [g x | g <- gs]
 -- using (:). If you build the list in an argument to a helper
 -- function, the surprise won't work.
 
-interpreter :: [String] -> [String]
-interpreter [] = []
-interpreter (cmd:commands) = 
+interpreter = todo
+-- interpreter :: [String] -> [String]
+-- interpreter [] = []
+-- interpreter (cmd:commands) = 
 
-execute :: String -> Int -> Int -> [String] -> [String]
-execute "printX" x _ cache = cache ++ [show x]
-execute "printY" _ y cache = cache ++ [show y]
-execute cmd x y cache = move cmd x y
+-- execute :: String -> Int -> Int -> [String] -> [String]
+-- execute "printX" x _ cache = cache ++ [show x]
+-- execute "printY" _ y cache = cache ++ [show y]
+-- execute cmd x y cache = move cmd x y
 
-move :: String -> Int -> Int -> [Int]
-move "down" x y = x : [y-1]
-move "up" x y = x : [y+1]
-move "left" x y = (x-1) : [y]
-move "right" x y = (x+1) : [y]
-move _ x y = x : [y]
+-- move :: String -> Int -> Int -> [Int]
+-- move "down" x y = x : [y-1]
+-- move "up" x y = x : [y+1]
+-- move "left" x y = (x-1) : [y]
+-- move "right" x y = (x+1) : [y]
+-- move _ x y = x : [y]
 
